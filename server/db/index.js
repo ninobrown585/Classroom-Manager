@@ -2,7 +2,7 @@ const { Pool } = require("pg");
 const db = new Pool({
   connectionString:
     process.env.DATABASE_URL ||
-    "postgres://localhost:5432/34a-classroom_manager",
+    "postgres://postgres:nino@localhost:5432/classroom_manager",
 });
 
 async function query(sql, params, callback) {
