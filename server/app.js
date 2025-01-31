@@ -3,6 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 const app = express();
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 // Logging middleware
 app.use(morgan("dev"));
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
 
   try {
     req.user = jwt.verify(token, process.env.JWT);
+    console.log(req.user)
   } catch {
     req.user = null;
   }
