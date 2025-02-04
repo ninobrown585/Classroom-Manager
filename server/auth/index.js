@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const axios = require("axios");
 
 const prisma = new PrismaClient();
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT = process.env.JWT;
 
 
 // Register a new instructor account
@@ -22,7 +22,7 @@ router.post("/register", async (req, res, next) => {
     })
 
     // Create a token with the instructor id
-    const token = jwt.sign({ id: user.id }, JWT_SECRET);
+    const token = jwt.sign({ id: user.id }, JWT);
 
     res.status(201).send({ token });
   } catch (error) {
@@ -47,7 +47,7 @@ router.post("/login", async (req, res, next) => {
     }
 
     // Create a token with the instructor id
-    const token = jwt.sign({ id: user.id }, JWT_SECRET);
+    const token = jwt.sign({ id: user.id }, JWT);
 
     res.send({ token });
   } catch (error) {
